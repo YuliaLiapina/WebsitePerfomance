@@ -1,0 +1,26 @@
+﻿@model WebsitePerfomance.Models.SiteViewModel
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    MinValue
+                </th>
+                <th>
+                    MaxValue
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Model.MinResponseTime (ms);
+                </td>
+                <td>
+                    @Model.MaxResponseTime (ms);
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

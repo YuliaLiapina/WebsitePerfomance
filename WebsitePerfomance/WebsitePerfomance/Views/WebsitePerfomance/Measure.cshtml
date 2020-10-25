@@ -1,0 +1,30 @@
+﻿@model WebsitePerfomance.Models.SiteViewModel
+@{
+    ViewBag.Title = "Measure";
+}
+
+@Html.Partial("ChartPartial")
+
+<h3>History</h3>
+@using (Html.BeginForm("Details", "WebsitePerfomance", FormMethod.Get))
+{
+    @Html.DropDownListFor(m => m.SelectedId, Model.Sites)
+    <input type="submit" value="Details" class="btn btn-default" />
+}
+
+<h2>Input URL</h2>
+
+@using (Html.BeginForm("Measure", "WebsitePerfomance", FormMethod.Post))
+{
+    <lable>URL</lable>
+    <p>
+        <input type="text" name="URL" />
+    </p>
+
+    <button type="submit" value="action">Measure response time </button>
+}
+
+@Html.Partial("TablePartial")
+
+
+

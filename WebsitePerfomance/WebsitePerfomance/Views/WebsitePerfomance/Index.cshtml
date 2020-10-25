@@ -1,0 +1,17 @@
+﻿@model WebsitePerfomance.Models.SitePostModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Input URL</h2>
+
+@using (Html.BeginForm("Measure", "WebsitePerfomance", FormMethod.Post))
+{
+    <lable>URL</lable>
+    <p>
+        <input type="text" name="URL" />
+    </p>
+
+    <button type="submit" value="action">Measure response time </button>
+}
+

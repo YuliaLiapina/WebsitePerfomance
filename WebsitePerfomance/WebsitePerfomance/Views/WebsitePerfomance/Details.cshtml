@@ -1,0 +1,11 @@
+﻿@model WebsitePerfomance.Models.SiteViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+@Model.Url
+@Html.Partial("ChartPartial")
+@Html.Partial("TablePartial")
+
+<a href="/WebsitePerfomance/Index">Back to main page</a>
