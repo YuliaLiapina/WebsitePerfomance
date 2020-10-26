@@ -18,12 +18,6 @@ namespace WebsitePerfomance
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "WebsitePerfomance", action = "Index", id = UrlParameter.Optional }
             );
-
-            routes.MapRoute(
-                name: "Sitemap",
-                url: "sitemap.xml",
-                defaults: new { controller = "SiteController", action = "Measure" }
-            );
         }
     }
 }
