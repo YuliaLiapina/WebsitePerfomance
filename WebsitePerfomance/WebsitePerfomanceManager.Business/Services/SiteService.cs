@@ -51,9 +51,18 @@ namespace WebsitePerfomanceManager.Business.Services
 
         public string GetSitemap(string url)
         {
-            url = url.Replace("https://", string.Empty);
+            string siteMap;
 
-            var siteMap = "https://" + url.Substring(0, url.IndexOf('/')) + "/sitemap.xml";
+            if(url.StartsWith("https://"))
+            {
+                url = url.Replace("https://", string.Empty);
+
+                siteMap = "https://" + url.Substring(0, url.IndexOf('/')) + "/sitemap.xml";
+            }
+            else
+            {
+                siteMap = "https://" + url + "/sitemap.xml";
+            }
 
             return siteMap;
         }
@@ -69,13 +78,20 @@ namespace WebsitePerfomanceManager.Business.Services
         {
             var measure = new MeasurementModel();
             Stopwatch timer = new Stopwatch();
+            
+            try
+            {
+                timer.Start();
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(sitemap);
+                request.UserAgent = "[any words that is more than 5 characters]";
 
-            timer.Start();
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            }
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(sitemap);
-            request.UserAgent = "[any words that is more than 5 characters]";
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            catch
+            {
+                return null;
+            }
 
             timer.Stop();
 

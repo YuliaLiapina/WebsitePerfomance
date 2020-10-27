@@ -29,22 +29,35 @@ namespace WebsitePerfomance.Controllers
         [HttpPost]
         public ActionResult Measure(SitePostModel site)
         {
+            if(site.Url!=null)
+            {
                 var siteModel = _mapper.Map<SiteModel>(site);
                 string sitemap = _siteService.GetSitemap(site.Url);
                 var measure = _siteService.MeasureSpeedResponse(sitemap);
 
-                siteModel.Measurements.Add(measure);
+                if(measure==null)
+                {
+                    return View("SiteMapNotFound");
+                }
 
-                _siteService.Add(siteModel, measure);
+                else
+                {
+                    siteModel.Measurements.Add(measure);
 
-                var currentSite = _siteService.GetMinMaxValues(siteModel);
+                    _siteService.Add(siteModel, measure);
 
-                var result = _mapper.Map<SiteViewModel>(currentSite);
+                    var currentSite = _siteService.GetMinMaxValues(siteModel);
 
-                result.Measurements = result.Measurements.OrderBy(m => m.ResponseTime).ToList();
-                result.Sites = GetSelectList();
+                    var result = _mapper.Map<SiteViewModel>(currentSite);
 
-                return View(result);           
+                    result.Measurements = result.Measurements.OrderBy(m => m.ResponseTime).ToList();
+                    result.Sites = GetSelectList();
+
+                    return View(result);
+                }                
+            }
+
+            return View("Index");
         }
 
         public ActionResult TablePartial()
@@ -82,13 +95,16 @@ namespace WebsitePerfomance.Controllers
         {
             var sites = _siteService.GetAll();
             var sitesViewModel = _mapper.Map<IList<SiteViewModel>>(sites);
-            //ViewBag.History = new SelectList(sitesViewModel, "Url", "Id", "");
 
-            //var model = new SiteViewModel();
             var selectList = from item in sitesViewModel
                           select new SelectListItem { Text = item.Url, Value = item.Id.ToString() };
 
             return selectList;
+        }
+
+        public ActionResult SiteMapNotFound()
+        {
+            return View();
         }
     }
 }

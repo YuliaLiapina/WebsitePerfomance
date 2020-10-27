@@ -24,3 +24,31 @@
         </tbody>
     </table>
 </div>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Date of testing
+                </th>
+                <th>
+                    Speed
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var measure in Model.Measurements)
+            {
+                <tr>
+                    <td>
+                        @measure.Date.ToShortDateString();
+                    </td>
+                    <td>
+                        @measure.ResponseTime;
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

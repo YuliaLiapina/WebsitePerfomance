@@ -3,7 +3,6 @@
     ViewBag.Title = "Measure";
 }
 
-@Html.Partial("ChartPartial")
 
 <h3>History</h3>
 @using (Html.BeginForm("Details", "WebsitePerfomance", FormMethod.Get))
@@ -11,6 +10,9 @@
     @Html.DropDownListFor(m => m.SelectedId, Model.Sites)
     <input type="submit" value="Details" class="btn btn-default" />
 }
+
+
+@Html.Partial("ChartPartial")
 
 <h2>Input URL</h2>
 
