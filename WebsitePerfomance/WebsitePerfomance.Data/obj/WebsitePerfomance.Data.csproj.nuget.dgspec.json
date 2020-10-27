@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\UkadGit\\WebsitePerfomance\\WebsitePerfomance\\WebsitePerfomance.Data\\WebsitePerfomance.Data.csproj": {}
+  },
+  "projects": {
+    "D:\\UkadGit\\WebsitePerfomance\\WebsitePerfomance\\WebsitePerfomance.Data\\WebsitePerfomance.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\UkadGit\\WebsitePerfomance\\WebsitePerfomance\\WebsitePerfomance.Data\\WebsitePerfomance.Data.csproj",
+        "projectName": "WebsitePerfomance.Data",
+        "projectPath": "D:\\UkadGit\\WebsitePerfomance\\WebsitePerfomance\\WebsitePerfomance.Data\\WebsitePerfomance.Data.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\UkadGit\\WebsitePerfomance\\WebsitePerfomance\\WebsitePerfomance.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

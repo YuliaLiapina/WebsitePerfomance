@@ -1,0 +1,11 @@
+C:\Users\User\source\repos\WebsitePerfomance\WebsitePerfomance.Data\bin\Debug\WebsitePerfomance.Data.dll.config
+C:\Users\User\source\repos\WebsitePerfomance\WebsitePerfomance.Data\bin\Debug\WebsitePerfomance.Data.dll
+C:\Users\User\source\repos\WebsitePerfomance\WebsitePerfomance.Data\bin\Debug\WebsitePerfomance.Data.pdb
+C:\Users\User\source\repos\WebsitePerfomance\WebsitePerfomance.Data\bin\Debug\EntityFramework.dll
+C:\Users\User\source\repos\WebsitePerfomance\WebsitePerfomance.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\source\repos\WebsitePerfomance\WebsitePerfomance.Data\bin\Debug\EntityFramework.xml
+C:\Users\User\source\repos\WebsitePerfomance\WebsitePerfomance.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\source\repos\WebsitePerfomance\WebsitePerfomance.Data\obj\Debug\WebsitePerfomance.Data.csprojAssemblyReference.cache
+C:\Users\User\source\repos\WebsitePerfomance\WebsitePerfomance.Data\obj\Debug\WebsitePerfomance.Data.csproj.CopyComplete
+C:\Users\User\source\repos\WebsitePerfomance\WebsitePerfomance.Data\obj\Debug\WebsitePerfomance.Data.dll
+C:\Users\User\source\repos\WebsitePerfomance\WebsitePerfomance.Data\obj\Debug\WebsitePerfomance.Data.pdb
