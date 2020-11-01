@@ -59,13 +59,19 @@ namespace WebsitePerfomance.Controllers
                     _siteService.UpdateSite(checkSite.Pages, checkSite.Id);
                 }
 
-                var getSite1 = _siteService.GetSiteByUrl(site.Url);
-                var result = _mapper.Map<SiteViewModel>(getSite1);
+                var getSiteResult = _siteService.GetSiteByUrl(site.Url);
+                var result = _mapper.Map<SiteViewModel>(getSiteResult);
 
                 result.Pages = result.Pages.OrderBy(m => m.CurrentResponseTime).ToList();
 
-                result.Sites = GetSelectList();
+                foreach (var item in getSiteResult.Pages)
+                {
+                    result.XPagesUrl.Add(item.PageUrl);
+                    result.YPageSpeed.Add(item.CurrentResponseTime);
+                }
 
+                result.Sites = GetSelectList();
+                               
                 return View(result);
             }
 
@@ -78,20 +84,8 @@ namespace WebsitePerfomance.Controllers
         }
 
         public ActionResult ChartPartial()
-        {
+        {         
             return PartialView();
-        }
-
-        public ActionResult ChartArrayBasic(int id)
-        {
-            var siteModel = _siteService.GetSiteById(id);
-            var chart = _siteService.GetChartStatistics(siteModel);
-
-            var chartStatisticsModel = new ChartStatisticsViewModel();
-            chartStatisticsModel.Chart = chart;
-            chartStatisticsModel.Chart.Write();
-
-            return null;
         }
 
         public ActionResult Details(int SelectedId)
@@ -121,6 +115,6 @@ namespace WebsitePerfomance.Controllers
         public ActionResult HistoryPartial()
         {
             return PartialView();
-        }
+        }               
     }
 }

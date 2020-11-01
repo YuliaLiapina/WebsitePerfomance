@@ -11,7 +11,6 @@ namespace WebsitePerfomanceManager.Business.Interfaces
         string GetSitemap(string url);
         List<TestingPageModel> MeasureSpeedResponse(string sitemap);
         SiteModel GetSiteByUrl(string url);
-        Chart GetChartStatistics(SiteModel site);
         SiteModel GetSiteById(int id);
         List<TestingPageModel> GetMinMax(List<TestingPageModel> pages);
         List<TestingPageModel> GetListSpeeds(List<TestingPageModel> measures, List<TestingPageModel> pagesSite);

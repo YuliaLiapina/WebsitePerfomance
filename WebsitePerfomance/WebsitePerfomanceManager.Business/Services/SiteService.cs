@@ -63,34 +63,6 @@ namespace WebsitePerfomanceManager.Business.Services
             return siteModel;
         }
 
-        public Chart GetChartStatistics(SiteModel site)
-        {
-            var listPages = new List<string>();
-            var listSpeeds = new List<string>();
-
-            //var measurments = site.Pages.OrderBy(x => x.ResponseTime);
-
-            foreach (var item in site.Pages)
-            {
-                listPages.Add(item.PageUrl);
-                listSpeeds.Add(item.CurrentResponseTime.ToString());
-            }
-
-            var myChart = new Chart(width: 1000, height: 500, theme: ChartTheme.Vanilla)
-                   .AddTitle("Statistic")
-                   .AddSeries(
-                       name: "Statistic",
-                       chartType: "Column",
-                       xValue: listPages,
-                   yValues: listSpeeds );
-
-            myChart.SetXAxis("Page", 0, listPages.Count);
-            myChart.SetYAxis("Response time (ms)"); 
-            
-
-            return myChart;
-        }
-
         public List<TestingPageModel> GetMinMax(List<TestingPageModel> pages)
         {
             foreach (var page in pages)

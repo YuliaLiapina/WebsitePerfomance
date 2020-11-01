@@ -216,3 +216,6 @@ D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\roslyn\vbc.
 D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\roslyn\vbc.rsp
 D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\roslyn\VBCSCompiler.exe
 D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\roslyn\VBCSCompiler.exe.config
+D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\Chart.Mvc.dll
+D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\Chart.Mvc.pdb
+D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\Chart.Mvc.xml
