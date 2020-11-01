@@ -1,0 +1,57 @@
+﻿@model WebsitePerfomance.Models.SiteViewModel
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    PageUrl
+                </th>
+                <th>
+                    CurrentSpeed
+                </th>
+                <th>
+                    MinSpeed
+                </th>
+                <th>
+                    MaxSpeed
+                </th>
+                <th>
+                    All values
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var page in Model.Pages)
+            {
+            <tr>
+                <td>
+                    @page.PageUrl
+                </td>
+                <td>
+                    @if (page.CurrentResponseTime == 0)
+                    {
+                        <h6>page was not found</h6>
+                    }
+                    else
+                    {
+                        @page.CurrentResponseTime
+                    }
+                </td>
+                <td>
+                    @page.MinResponseTime
+                </td>
+                <td>
+                    @page.MaxResponseTime
+                </td>
+                <td>
+                    @foreach(var speed in page.Speeds)
+                    {
+                    <p>@speed.Speed</p> 
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

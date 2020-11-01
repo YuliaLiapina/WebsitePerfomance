@@ -11,6 +11,7 @@ namespace WebsitePerfomance.Data
         }
 
         public DbSet<Site> Sites { get; set; } 
-        public DbSet<Measurement> Measurements { get; set; }
+        public DbSet<TestingPage> Pages { get; set; }
+        public DbSet<PageSpeed> Speeds { get; set; }
     }
 }

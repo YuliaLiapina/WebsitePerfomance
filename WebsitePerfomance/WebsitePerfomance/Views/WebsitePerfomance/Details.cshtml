@@ -2,10 +2,10 @@
 @{
     ViewBag.Title = "Details";
 }
+<a href="/WebsitePerfomance/Index">Back to main page</a>
+<h2>Details of @Model.Url</h2>
 
-<h2>Details</h2>
-@Model.Url
-@Html.Partial("ChartPartial")
-@Html.Partial("TablePartial")
+@*@Html.Partial("ChartPartial")*@
+@Html.Partial("HistoryPartial")
 
 <a href="/WebsitePerfomance/Index">Back to main page</a>

@@ -6,12 +6,11 @@ namespace WebsitePerfomanceManager.Business.Models
     {
         public SiteModel()
         {
-            Measurements = new List<MeasurementModel>();
+            Pages = new List<TestingPageModel>();
         }
         public int Id { get; set; }
         public string Url { get; set; }
-        public IList<MeasurementModel> Measurements { get; set; }
-        public double MinResponseTime { get; set; }
-        public double MaxResponseTime { get; set; }
+        public string Sitemap { get; set; }
+        public List<TestingPageModel> Pages { get; set; }
     }
 }

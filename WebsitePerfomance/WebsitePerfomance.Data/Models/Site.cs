@@ -6,12 +6,11 @@ namespace WebsitePerfomance.Data.Models
     {
         public Site()
         {
-            Measurements = new List<Measurement>();
+            Pages = new List<TestingPage>();
         }
         public int Id { get; set; }
         public string Url { get; set; }
-        public double MinResponseTime { get; set; }
-        public double MaxResponseTime { get; set; }
-        public ICollection<Measurement> Measurements { get; set; }
+        public string Sitemap { get; set; }
+        public List<TestingPage> Pages { get; set; }
     }
 }

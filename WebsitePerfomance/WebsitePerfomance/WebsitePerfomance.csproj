@@ -166,8 +166,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChartStatisticsViewModel.cs" />
-    <Compile Include="Models\MeasurementPostModel.cs" />
-    <Compile Include="Models\MeasurementViewModel.cs" />
+    <Compile Include="Models\PageSpeedViewModel.cs" />
+    <Compile Include="Models\TestingPageViewModel.cs" />
     <Compile Include="Models\SitePostModel.cs" />
     <Compile Include="Models\SiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -215,6 +215,7 @@
     <Content Include="Views\Shared\ChartPartial.cshtml" />
     <Content Include="Views\WebsitePerfomance\ChartArrayBasic.cshtml" />
     <Content Include="Views\WebsitePerfomance\SiteMapNotFound.cshtml" />
+    <Content Include="Views\Shared\HistoryPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,12 +19,15 @@ namespace WebsitePerfomance.Autofac
                 cfg.CreateMap<SiteModel, SiteViewModel>();
                 cfg.CreateMap<SiteViewModel, SiteModel>();
 
-                cfg.CreateMap<Measurement, MeasurementModel>();
-                cfg.CreateMap<MeasurementModel, Measurement>();
-                cfg.CreateMap<Measurement, MeasurementPostModel>();
-                cfg.CreateMap<MeasurementPostModel, Measurement>();
-                cfg.CreateMap<MeasurementModel, MeasurementViewModel>();
-                cfg.CreateMap<MeasurementViewModel, MeasurementModel>();
+                cfg.CreateMap<TestingPage, TestingPageModel>();
+                cfg.CreateMap<TestingPageModel, TestingPage>();
+                cfg.CreateMap<TestingPageModel, TestingPageViewModel>();
+                cfg.CreateMap<TestingPageViewModel, TestingPageModel>();
+
+                cfg.CreateMap<PageSpeed, PageSpeedModel>();
+                cfg.CreateMap<PageSpeedModel, PageSpeed>();
+                cfg.CreateMap<PageSpeedViewModel, PageSpeedModel>();
+                cfg.CreateMap<PageSpeedModel, PageSpeedViewModel>();
 
             })).AsSelf().SingleInstance();
 

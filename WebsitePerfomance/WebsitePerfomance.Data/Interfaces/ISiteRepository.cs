@@ -6,10 +6,9 @@ namespace WebsitePerfomance.Data.Interfaces
     public interface ISiteRepository
     {
         void Add(Site Site);
-        IList<Site> GetAll();
+        IList<Site> GetAllSites();
         Site GetSiteByUrl(string url);
-        void AddMeasurementToSite(Measurement measurement, int siteId);
         Site GetSiteById(int id);
-        void SaveMinMaxValues(Site site);
+        void UpdateSite(List<TestingPage> pagesSite, int id);
     }
 }

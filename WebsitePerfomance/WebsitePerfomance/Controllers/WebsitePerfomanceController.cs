@@ -29,32 +29,44 @@ namespace WebsitePerfomance.Controllers
         [HttpPost]
         public ActionResult Measure(SitePostModel site)
         {
-            if(site.Url!=null)
+            if (site.Url != null)
             {
                 var siteModel = _mapper.Map<SiteModel>(site);
-                string sitemap = _siteService.GetSitemap(site.Url);
-                var measure = _siteService.MeasureSpeedResponse(sitemap);
+                var measures = new List<TestingPageModel>();
 
-                if(measure==null)
+                var checkSite = _siteService.GetSiteByUrl(site.Url); 
+
+                if (checkSite == null)
                 {
-                    return View("SiteMapNotFound");
+                    siteModel.Sitemap = _siteService.GetSitemap(site.Url);
+                    measures = _siteService.MeasureSpeedResponse(siteModel.Sitemap);
+
+                    if (measures == null)
+                    {
+                        return View("SiteMapNotFound");
+                    }
+
+                    siteModel.Pages = measures;
+                    siteModel.Pages = _siteService.GetMinMax(siteModel.Pages);
+                    _siteService.Add(siteModel);
                 }
 
                 else
                 {
-                    siteModel.Measurements.Add(measure);
+                    measures = _siteService.MeasureSpeedResponse(checkSite.Sitemap);
+                    checkSite.Pages = _siteService.GetListSpeeds(measures, checkSite.Pages);
+                    checkSite.Pages = _siteService.GetMinMax(checkSite.Pages);
+                    _siteService.UpdateSite(checkSite.Pages, checkSite.Id);
+                }
 
-                    _siteService.Add(siteModel, measure);
+                var getSite1 = _siteService.GetSiteByUrl(site.Url);
+                var result = _mapper.Map<SiteViewModel>(getSite1);
 
-                    var currentSite = _siteService.GetMinMaxValues(siteModel);
+                result.Pages = result.Pages.OrderBy(m => m.CurrentResponseTime).ToList();
 
-                    var result = _mapper.Map<SiteViewModel>(currentSite);
+                result.Sites = GetSelectList();
 
-                    result.Measurements = result.Measurements.OrderBy(m => m.ResponseTime).ToList();
-                    result.Sites = GetSelectList();
-
-                    return View(result);
-                }                
+                return View(result);
             }
 
             return View("Index");
@@ -86,7 +98,6 @@ namespace WebsitePerfomance.Controllers
         {
             var site = _siteService.GetSiteById(SelectedId);
             var siteViewModel = _mapper.Map<SiteViewModel>(site);
-            siteViewModel.Measurements = siteViewModel.Measurements.OrderBy(m => m.ResponseTime).ToList();
 
             return View(siteViewModel);
         }
@@ -97,7 +108,7 @@ namespace WebsitePerfomance.Controllers
             var sitesViewModel = _mapper.Map<IList<SiteViewModel>>(sites);
 
             var selectList = from item in sitesViewModel
-                          select new SelectListItem { Text = item.Url, Value = item.Id.ToString() };
+                             select new SelectListItem { Text = item.Url, Value = item.Id.ToString() };
 
             return selectList;
         }
@@ -105,6 +116,11 @@ namespace WebsitePerfomance.Controllers
         public ActionResult SiteMapNotFound()
         {
             return View();
+        }
+
+        public ActionResult HistoryPartial()
+        {
+            return PartialView();
         }
     }
 }

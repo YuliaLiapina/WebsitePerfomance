@@ -1,53 +1,48 @@
 ﻿@model WebsitePerfomance.Models.SiteViewModel
 
-<div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    MinValue
-                </th>
-                <th>
-                    MaxValue
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    @Model.MinResponseTime (ms);
-                </td>
-                <td>
-                    @Model.MaxResponseTime (ms);
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
 
 <div>
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    Date of testing
+                    PageUrl
                 </th>
                 <th>
-                    Speed
+                    CurrentSpeed
+                </th>
+                <th>
+                    MinSpeed
+                </th>
+                <th>
+                    MaxSpeed
                 </th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var measure in Model.Measurements)
+            @foreach (var page in Model.Pages)
             {
-                <tr>
-                    <td>
-                        @measure.Date.ToShortDateString();
-                    </td>
-                    <td>
-                        @measure.ResponseTime;
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @page.PageUrl
+                </td>
+                <td>
+                    @if (page.CurrentResponseTime == 0)
+                    {
+                        <h6>page was not found</h6>
+                    }
+                    else
+                    {
+                        @page.CurrentResponseTime
+                    }
+                </td>
+                <td>
+                    @page.MinResponseTime
+                </td>
+                <td>
+                    @page.MaxResponseTime
+                </td>
+            </tr>
             }
         </tbody>
     </table>

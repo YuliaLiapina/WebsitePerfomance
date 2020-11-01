@@ -10,29 +10,18 @@ namespace WebsitePerfomance.Data.Repositories
     {
         public void Add(Site Site)
         {
-            using(var context = new WebsitePerfomanceDbContext())
+            using (var context = new WebsitePerfomanceDbContext())
             {
                 context.Sites.Add(Site);
                 context.SaveChanges();
             }
         }
 
-        public void AddMeasurementToSite(Measurement measurement, int siteId)
+        public IList<Site> GetAllSites()
         {
-            using(var context = new WebsitePerfomanceDbContext())
+            using (var context = new WebsitePerfomanceDbContext())
             {
-                var site = context.Sites.FirstOrDefault(s => s.Id == siteId);
-                site.Measurements.Add(measurement);
-
-                context.SaveChanges();
-            }
-        }
-
-        public IList<Site>GetAll()
-        {
-            using(var context = new WebsitePerfomanceDbContext())
-            {
-                var sites = context.Sites.Include(s => s.Measurements).ToList();
+                var sites = context.Sites.Include(s => s.Pages.Select(p => p.Speeds)).ToList();
 
                 return sites;
             }
@@ -40,11 +29,11 @@ namespace WebsitePerfomance.Data.Repositories
 
         public Site GetSiteByUrl(string url)
         {
-            using(var context = new WebsitePerfomanceDbContext())
+            using (var context = new WebsitePerfomanceDbContext())
             {
-                var site = context.Sites.Include(s => s.Measurements).FirstOrDefault(s=>s.Url==url);
+                var currentSite = context.Sites.Include(s => s.Pages.Select(p => p.Speeds)).FirstOrDefault(x => x.Url == url);
 
-                return site;
+                return currentSite;
             }
         }
 
@@ -52,20 +41,23 @@ namespace WebsitePerfomance.Data.Repositories
         {
             using (var context = new WebsitePerfomanceDbContext())
             {
-                var site = context.Sites.Include(s => s.Measurements).FirstOrDefault(s => s.Id == id);
+                var site = context.Sites.Include(s => s.Pages.Select(p => p.Speeds)).FirstOrDefault(s => s.Id == id);
 
                 return site;
             }
         }
 
-        public void SaveMinMaxValues(Site site)
+        public void UpdateSite(List<TestingPage> pagesSite, int id)
         {
             using (var context = new WebsitePerfomanceDbContext())
             {
-                var currentSite = context.Sites.Include(s => s.Measurements).FirstOrDefault(s => s.Id == site.Id);
+                var currentSite = context.Sites.Include(s => s.Pages.Select(p => p.Speeds)).FirstOrDefault(x => x.Id == id);
 
-                currentSite.MinResponseTime = site.MinResponseTime;
-                currentSite.MaxResponseTime = site.MaxResponseTime;
+                for (int i=0;i<pagesSite.Count;i++)
+                {
+                    currentSite.Pages[i] = pagesSite[i];
+                    pagesSite[i].Site = currentSite;
+                }
 
                 context.SaveChanges();
             }

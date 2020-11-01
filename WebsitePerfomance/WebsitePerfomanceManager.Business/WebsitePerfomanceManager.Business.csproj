@@ -42,8 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\ISiteService.cs" />
-    <Compile Include="Models\MeasurementModel.cs" />
+    <Compile Include="Models\PageSpeedModel.cs" />
     <Compile Include="Models\SiteModel.cs" />
+    <Compile Include="Models\TestingPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SiteService.cs" />
   </ItemGroup>
