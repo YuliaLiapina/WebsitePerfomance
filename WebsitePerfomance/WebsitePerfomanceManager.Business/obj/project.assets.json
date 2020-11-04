@@ -32,6 +32,15 @@
           "buildTransitive/EntityFramework.targets": {}
         }
       },
+      "HtmlAgilityPack/1.11.26": {
+        "type": "package",
+        "compile": {
+          "lib/Net45/HtmlAgilityPack.dll": {}
+        },
+        "runtime": {
+          "lib/Net45/HtmlAgilityPack.dll": {}
+        }
+      },
       "Microsoft.AspNet.Mvc/5.2.7": {
         "type": "package",
         "dependencies": {
@@ -125,6 +134,15 @@
         "build": {
           "buildTransitive/EntityFramework.props": {},
           "buildTransitive/EntityFramework.targets": {}
+        }
+      },
+      "HtmlAgilityPack/1.11.26": {
+        "type": "package",
+        "compile": {
+          "lib/Net45/HtmlAgilityPack.dll": {}
+        },
+        "runtime": {
+          "lib/Net45/HtmlAgilityPack.dll": {}
         }
       },
       "Microsoft.AspNet.Mvc/5.2.7": {
@@ -222,6 +240,15 @@
           "buildTransitive/EntityFramework.targets": {}
         }
       },
+      "HtmlAgilityPack/1.11.26": {
+        "type": "package",
+        "compile": {
+          "lib/Net45/HtmlAgilityPack.dll": {}
+        },
+        "runtime": {
+          "lib/Net45/HtmlAgilityPack.dll": {}
+        }
+      },
       "Microsoft.AspNet.Mvc/5.2.7": {
         "type": "package",
         "dependencies": {
@@ -315,6 +342,15 @@
         "build": {
           "buildTransitive/EntityFramework.props": {},
           "buildTransitive/EntityFramework.targets": {}
+        }
+      },
+      "HtmlAgilityPack/1.11.26": {
+        "type": "package",
+        "compile": {
+          "lib/Net45/HtmlAgilityPack.dll": {}
+        },
+        "runtime": {
+          "lib/Net45/HtmlAgilityPack.dll": {}
         }
       },
       "Microsoft.AspNet.Mvc/5.2.7": {
@@ -456,6 +492,54 @@
         "tools/netcoreapp3.0/any/ef6.runtimeconfig.json"
       ]
     },
+    "HtmlAgilityPack/1.11.26": {
+      "sha512": "e0L7s+cj4MapB8hpL8sakwTSwX/cngBCcNfCT8/2v1IRXoly/hrt3FjkzGmgsjMHlO50whSGmRbDhEiUudd3tQ==",
+      "type": "package",
+      "path": "htmlagilitypack/1.11.26",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "htmlagilitypack.1.11.26.nupkg.sha512",
+        "htmlagilitypack.nuspec",
+        "lib/Net35/HtmlAgilityPack.dll",
+        "lib/Net35/HtmlAgilityPack.pdb",
+        "lib/Net35/HtmlAgilityPack.xml",
+        "lib/Net40-client/HtmlAgilityPack.dll",
+        "lib/Net40-client/HtmlAgilityPack.pdb",
+        "lib/Net40-client/HtmlAgilityPack.xml",
+        "lib/Net40/HtmlAgilityPack.XML",
+        "lib/Net40/HtmlAgilityPack.dll",
+        "lib/Net40/HtmlAgilityPack.pdb",
+        "lib/Net45/HtmlAgilityPack.XML",
+        "lib/Net45/HtmlAgilityPack.dll",
+        "lib/Net45/HtmlAgilityPack.pdb",
+        "lib/NetCore45/HtmlAgilityPack.XML",
+        "lib/NetCore45/HtmlAgilityPack.dll",
+        "lib/NetCore45/HtmlAgilityPack.pdb",
+        "lib/netstandard1.3/HtmlAgilityPack.deps.json",
+        "lib/netstandard1.3/HtmlAgilityPack.dll",
+        "lib/netstandard1.3/HtmlAgilityPack.pdb",
+        "lib/netstandard1.3/HtmlAgilityPack.xml",
+        "lib/netstandard1.6/HtmlAgilityPack.deps.json",
+        "lib/netstandard1.6/HtmlAgilityPack.dll",
+        "lib/netstandard1.6/HtmlAgilityPack.pdb",
+        "lib/netstandard1.6/HtmlAgilityPack.xml",
+        "lib/netstandard2.0/HtmlAgilityPack.deps.json",
+        "lib/netstandard2.0/HtmlAgilityPack.dll",
+        "lib/netstandard2.0/HtmlAgilityPack.pdb",
+        "lib/netstandard2.0/HtmlAgilityPack.xml",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.XML",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.dll",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.pdb",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.XML",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.pdb",
+        "lib/uap10.0/HtmlAgilityPack.XML",
+        "lib/uap10.0/HtmlAgilityPack.dll",
+        "lib/uap10.0/HtmlAgilityPack.pdb",
+        "lib/uap10.0/HtmlAgilityPack.pri"
+      ]
+    },
     "Microsoft.AspNet.Mvc/5.2.7": {
       "sha512": "m3hUsn48k6Qb5El9A8naTwGTLCdSQKGSpGweqIfiVKltGJzAJJxuXvhhaQQtLCGg3i5V88iGjz0JG72/tlFKlg==",
       "type": "package",
@@ -526,6 +610,7 @@
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
       "AutoMapper >= 10.1.1",
+      "HtmlAgilityPack >= 1.11.26",
       "Microsoft.AspNet.Mvc >= 5.2.7",
       "WebsitePerfomance.Data >= 1.0.0"
     ]
@@ -575,6 +660,10 @@
           "AutoMapper": {
             "target": "Package",
             "version": "[10.1.1, )"
+          },
+          "HtmlAgilityPack": {
+            "target": "Package",
+            "version": "[1.11.26, )"
           },
           "Microsoft.AspNet.Mvc": {
             "target": "Package",

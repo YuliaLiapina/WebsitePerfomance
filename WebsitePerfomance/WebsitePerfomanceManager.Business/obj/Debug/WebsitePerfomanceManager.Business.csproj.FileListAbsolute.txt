@@ -43,3 +43,5 @@ D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomanceManager.Business
 D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomanceManager.Business\obj\Debug\WebsitePerfomanceManager.Business.csproj.CopyComplete
 D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomanceManager.Business\obj\Debug\WebsitePerfomanceManager.Business.dll
 D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomanceManager.Business\obj\Debug\WebsitePerfomanceManager.Business.pdb
+D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomanceManager.Business\bin\Debug\HtmlAgilityPack.dll
+D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomanceManager.Business\bin\Debug\HtmlAgilityPack.pdb

@@ -99,6 +99,10 @@
               "target": "Package",
               "version": "[10.1.1, )"
             },
+            "HtmlAgilityPack": {
+              "target": "Package",
+              "version": "[1.11.26, )"
+            },
             "Microsoft.AspNet.Mvc": {
               "target": "Package",
               "version": "[5.2.7, )"

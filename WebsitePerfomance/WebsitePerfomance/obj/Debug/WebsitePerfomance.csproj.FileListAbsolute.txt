@@ -219,3 +219,5 @@ D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\roslyn\VBCS
 D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\Chart.Mvc.dll
 D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\Chart.Mvc.pdb
 D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\Chart.Mvc.xml
+D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\HtmlAgilityPack.dll
+D:\UkadGit\WebsitePerfomance\WebsitePerfomance\WebsitePerfomance\bin\HtmlAgilityPack.pdb

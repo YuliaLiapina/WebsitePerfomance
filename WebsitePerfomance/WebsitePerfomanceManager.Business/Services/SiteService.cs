@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using HtmlAgilityPack;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Net;
-using System.Web.Helpers;
 using System.Xml;
 using WebsitePerfomance.Data.Interfaces;
 using WebsitePerfomance.Data.Models;
@@ -74,16 +75,16 @@ namespace WebsitePerfomanceManager.Business.Services
                 }
                 else
                 {
-                    if(page.Speeds[0].Speed==0)
+                    if (page.Speeds[0].Speed == 0)
                     {
                         page.MinResponseTime = page.Speeds[1].Speed;
                     }
                     page.MinResponseTime = page.Speeds[0].Speed;
-                    page.MaxResponseTime = page.Speeds[0].Speed; 
+                    page.MaxResponseTime = page.Speeds[0].Speed;
 
-                    for (int i=0;i<page.Speeds.Count;i++)
+                    for (int i = 0; i < page.Speeds.Count; i++)
                     {
-                        if(page.Speeds[i].Speed<page.MinResponseTime)
+                        if (page.Speeds[i].Speed < page.MinResponseTime)
                         {
                             page.MinResponseTime = page.Speeds[i].Speed;
                         }
@@ -135,9 +136,110 @@ namespace WebsitePerfomanceManager.Business.Services
 
             if (xmlDoc == null)
             {
-                return null;
+                measures = GetSpeedsForCreatedSitemap(sitemap);
             }
 
+            else
+            {
+                measures = GetSpeedsForExistingSitemap(xmlDoc);
+            }
+
+            return measures;
+        }
+
+        public List<TestingPageModel> GetListSpeeds(List<TestingPageModel> measures, List<TestingPageModel> pagesSite)
+        {
+
+            var speed = new PageSpeedModel();
+            speed.Speed = 0;
+            for (int i = 0; i < measures.Count; i++)
+            {
+                if (measures[i].Speeds.Count == 0)
+                {
+                    pagesSite[i].Speeds.Add(speed);
+                }
+                else
+                {
+                    pagesSite[i].Speeds.Add(measures[i].Speeds[0]);
+                    pagesSite[i].CurrentResponseTime = measures[i].CurrentResponseTime;
+                }
+            }
+
+            return pagesSite;
+        }
+
+        public void UpdateSite(List<TestingPageModel> pagesSiteModel, int id)
+        {
+            var pagesSite = _mapper.Map<List<TestingPage>>(pagesSiteModel);
+            _siteRepository.UpdateSite(pagesSite, id);
+        }
+
+        private List<string> PageParser(string url)
+        {
+            var listLinks = new List<string>();
+
+            WebClient client = new WebClient();
+            Stream data = client.OpenRead(url);
+            StreamReader reader = new StreamReader(data);
+            string html = reader.ReadToEnd();
+            data.Close();
+            reader.Close();
+
+            HtmlDocument pageHtml = new HtmlDocument();
+            pageHtml.LoadHtml(html);
+
+            foreach (HtmlNode link in pageHtml.DocumentNode.SelectNodes("//a[@href]"))
+            {
+                // Get the value of the HREF attribute
+                string hrefValue = link.GetAttributeValue("href", string.Empty);
+
+                if ((hrefValue.Length > 2) && hrefValue.StartsWith(url))
+                {
+                    listLinks.Add(hrefValue);
+                }
+            }
+
+            return listLinks;
+        }
+
+        private List<TestingPageModel> GetSpeedsForCreatedSitemap(string sitemap)
+        {
+            int endPartUrl = 12;
+            var measures = new List<TestingPageModel>();
+            var url = sitemap.Substring(0, sitemap.Length - endPartUrl);
+            var pages = PageParser(url);
+
+            foreach (var page in pages)
+            {
+                var currentPage = new TestingPageModel();
+                currentPage.PageUrl = page;
+
+                try
+                {
+                    Stopwatch timer = new Stopwatch();
+                    timer.Start();
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(currentPage.PageUrl);
+                    //request.UserAgent = "My User Agent";
+                     
+                    HttpWebResponse response =  (HttpWebResponse)request.GetResponse();
+                    
+                    timer.Stop();
+                    currentPage.CurrentResponseTime = timer.Elapsed.TotalMilliseconds;
+                    currentPage.Speeds.Add(new PageSpeedModel { Speed = currentPage.CurrentResponseTime });
+                }
+                catch
+                {
+                    currentPage.CurrentResponseTime = 0;
+                }
+
+                measures.Add(currentPage);
+            }
+            return measures;
+        }
+
+        private List<TestingPageModel> GetSpeedsForExistingSitemap(XmlDocument xmlDoc)
+        {
+            var measures = new List<TestingPageModel>();
             XmlElement xRoot = xmlDoc.DocumentElement;
 
             foreach (XmlNode xnode in xRoot)
@@ -173,34 +275,8 @@ namespace WebsitePerfomanceManager.Business.Services
             }
             return measures;
         }
-
-        public List<TestingPageModel> GetListSpeeds(List<TestingPageModel> measures, List<TestingPageModel> pagesSite)
-        {           
-
-                var speed = new PageSpeedModel();
-                speed.Speed = 0;
-                for (int i = 0; i < measures.Count; i++)
-                {
-                    if (measures[i].Speeds.Count == 0)
-                    {
-                    pagesSite[i].Speeds.Add(speed);
-                    }
-                    else
-                    {
-                    pagesSite[i].Speeds.Add(measures[i].Speeds[0]);
-                    pagesSite[i].CurrentResponseTime = measures[i].CurrentResponseTime;
-                    }
-                }
-
-            return pagesSite;
-        }
-
-        public void UpdateSite(List<TestingPageModel> pagesSiteModel, int id)
-        {
-            var pagesSite = _mapper.Map<List<TestingPage>>(pagesSiteModel);
-            _siteRepository.UpdateSite(pagesSite, id);
-        }
     }
+
 }
 
 

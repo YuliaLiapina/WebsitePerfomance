@@ -58,6 +58,9 @@
     <PackageReference Include="AutoMapper">
       <Version>10.1.1</Version>
     </PackageReference>
+    <PackageReference Include="HtmlAgilityPack">
+      <Version>1.11.26</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNet.Mvc">
       <Version>5.2.7</Version>
     </PackageReference>
